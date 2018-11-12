@@ -6,6 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+      TODO: write following methods: insert, delete, update
+*/
 public class HotelDBHelper extends SQLiteJDBC {
 
     public static final String TABLE = "Hotel";
@@ -14,7 +17,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         Connection con = getConnection();
 
         try {
-            createTable(con);
+            createTable();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -24,7 +27,7 @@ public class HotelDBHelper extends SQLiteJDBC {
 
         try {
             if (con != null) {
-                saveAll(con, hotels);
+                saveAll(hotels);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -33,7 +36,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         List<Hotel> rows = null;
         try {
             if (con != null) {
-                rows = findAll(con);
+                rows = findAll();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,7 +45,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         close(con);
     }
 
-    private static void createTable(Connection conn) throws SQLException {
+    private static void createTable() throws SQLException {
         Connection con = getConnection();
         Statement stmt = con.createStatement();
 
@@ -64,9 +67,10 @@ public class HotelDBHelper extends SQLiteJDBC {
         System.out.println("table " + TABLE + " created successfully!");
     }
 
-    public static List<Hotel> findAll(Connection conn) throws SQLException {
+    public static List<Hotel> findAll() throws SQLException {
+        Connection con = getConnection();
         List<Hotel> rows = new ArrayList<>();
-        Statement stat = conn.createStatement();
+        Statement stat = con.createStatement();
         ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
         while (rs.next()) {
             rows.add(new Hotel(rs.getString("name"), rs.getString("street"), rs.getString("zip"), rs.getString("city")));
@@ -76,9 +80,10 @@ public class HotelDBHelper extends SQLiteJDBC {
         return rows;
     }
 
-    private static void saveAll(Connection conn, List<Hotel> hotels)
+    private static void saveAll(List<Hotel> hotels)
             throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?);");
+        Connection con = getConnection();
+        PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?);");
         for (int i = 0; i < hotels.size(); i++) {
             prep.setString(1, String.valueOf(i));
             prep.setString(2, hotels.get(i).getName());
@@ -88,9 +93,9 @@ public class HotelDBHelper extends SQLiteJDBC {
             prep.addBatch();
         }
 
-        conn.setAutoCommit(false);
+        con.setAutoCommit(false);
         prep.executeBatch();
-        conn.setAutoCommit(true);
+        con.setAutoCommit(true);
         close(prep);
     }
 }

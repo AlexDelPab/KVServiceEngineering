@@ -35,7 +35,7 @@ public class SQLiteJDBC {
         return DriverManager.getConnection(SQLiteJDBC.DEFAULT_URL);
     }
 
-    public static void createNewDatabase() {
+    private static void createNewDatabase() {
 
         try {
             Connection conn = DriverManager.getConnection(DEFAULT_URL);
@@ -50,7 +50,7 @@ public class SQLiteJDBC {
         }
     }
 
-    static void close(Connection conn) {
+    protected static void close(Connection conn) {
         try {
             if (conn != null) {
                 conn.close();
@@ -60,7 +60,7 @@ public class SQLiteJDBC {
         }
     }
 
-    static void close(Statement stat) {
+    protected static void close(Statement stat) {
         try {
             if (stat != null) {
                 stat.close();
@@ -70,7 +70,7 @@ public class SQLiteJDBC {
         }
     }
 
-    static void close(ResultSet rs) {
+    protected static void close(ResultSet rs) {
         try {
             if (rs != null) {
                 rs.close();
