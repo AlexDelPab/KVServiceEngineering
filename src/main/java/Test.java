@@ -8,4 +8,8 @@ public class Test {
     public String getTestString() {
         return "World!";
     }
+
+    public String getPostData(String test) {
+        return test;
+    }
 }
