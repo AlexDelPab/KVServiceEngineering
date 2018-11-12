@@ -1,11 +1,15 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:useBean id="test" class="main.java.Test"/>
 
-<t:template>
+<c:set var="content">
+    <h1>Hello <%= test.getTestString() %></h1>
+</c:set>
+
+<t:base>
     <jsp:body>
-        <h1>Hello <% test.getTestString(); %></h1>
-        <p>Hi I'm the heart of the message</p>
+        ${content}
     </jsp:body>
-</t:template>
+</t:base>
