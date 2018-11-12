@@ -1,0 +1,19 @@
+-- Tutorials
+
+https://www.javatpoint.com/java-sqlite
+
+http://www.java2s.com/Tutorials/Java/JDBC_How_to/Statement/Insert_to_Sqlite_database.htm
+
+https://www.tutorialspoint.com/sqlite/sqlite_java.htm
+
+http://www.sqlitetutorial.net/sqlite-java/create-table/
+
+https://lcdev.dk/2011/09/26/using-sqlite-with-jsp/
+
+-- Connect to DB
+
+Rechtsklick HotelDBHelper und Run HotelDBHelper.main()
+
+-- Open DB in IntelliJ
+
+Doppelklick auf File "Hotel.db"

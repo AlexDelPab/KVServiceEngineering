@@ -29,7 +29,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="javax.persistence" level="project" />
-    <orderEntry type="library" name="javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" exported="" name="javax.persistence" level="project" />
+    <orderEntry type="library" exported="" name="javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" name="JPA 2.0-2.0" level="project" />
   </component>
 </module>
