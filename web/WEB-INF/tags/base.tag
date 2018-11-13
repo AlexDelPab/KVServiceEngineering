@@ -17,6 +17,7 @@
     <link href="../../resources/template/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="../../resources/template/css/sb-admin.css" rel="stylesheet">
 
+    <link href="../../resources/base.css" rel="stylesheet">
 </head>
 
 <body id="page-top">

@@ -1,0 +1,25 @@
+footer.sticky-footer {
+    height: 50px !important;
+}
+
+@media (min-width: 768px) {
+    footer.sticky-footer {
+        width: calc(100% - 180px) !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 180px !important;
+    }
+
+    .sidebar .nav-item .nav-link {
+        width: 180px !important;
+    }
+}
+
+/*@media (min-width: 768px) {*/
+    /*body.fixed-nav #content-wrapper {*/
+        /*padding-left: 225px*/
+    /*}*/
+/*}*/
