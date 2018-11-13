@@ -1,11 +1,12 @@
-package main.java.database.Helpers;
+package main.java.Database.Helpers;
 
-import main.java.database.Entities.Hotel;
-import main.java.database.SQLiteJDBC;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import main.java.Database.Entities.Hotel;
+import main.java.Database.SQLiteJDBC;
 
 /*
       TODO: write following methods: insert, delete, update
@@ -51,7 +52,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         Statement stmt = con.createStatement();
 
         try {
-            System.out.println("Opened main.java.database successfully");
+            System.out.println("Opened main.java.Database successfully");
 
             String sql = "CREATE TABLE " + TABLE +
                     "(ID INT PRIMARY KEY     NOT NULL,\n" +

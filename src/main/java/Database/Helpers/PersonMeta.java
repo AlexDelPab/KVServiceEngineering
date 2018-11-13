@@ -1,4 +1,4 @@
-package main.java.database.Helpers;
+package main.java.Database.Helpers;
 
 public class PersonMeta {
     public static String personMeta =

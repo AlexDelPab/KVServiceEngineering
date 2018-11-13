@@ -1,7 +1,6 @@
 package main.java.Database;
 
-import main.java.database.Helpers.GuestDBHelper;
-import main.java.database.Helpers.HotelDBHelper;
+import main.java.Database.Helpers.HotelDBHelper;
 
 import java.sql.*;
 
