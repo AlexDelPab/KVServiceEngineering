@@ -6428,7 +6428,7 @@ defaults._set('bar', {
 		xAxes: [{
 			type: 'category',
 
-			// Specific to Bar Controller
+			// Specific to Bar controller
 			categoryPercentage: 0.8,
 			barPercentage: 0.9,
 
@@ -6463,7 +6463,7 @@ defaults._set('horizontalBar', {
 			position: 'left',
 			type: 'category',
 
-			// Specific to Horizontal Bar Controller
+			// Specific to Horizontal Bar controller
 			categoryPercentage: 0.8,
 			barPercentage: 0.9,
 
@@ -8443,7 +8443,7 @@ module.exports = function(Chart) {
 			me._bufferedRender = false;
 
 			/**
-			 * Provided for backward compatibility, Chart and Chart.Controller have been merged,
+			 * Provided for backward compatibility, Chart and Chart.controller have been merged,
 			 * the "instance" still need to be defined since it might be called from plugins.
 			 * @prop Chart#chart
 			 * @deprecated since version 2.6.0

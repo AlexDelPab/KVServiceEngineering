@@ -1,7 +1,7 @@
-package main.java.Database.Helpers;
+package main.java.database.helpers;
 
-import main.java.Database.Entities.Employer;
-import main.java.Database.SQLiteJDBC;
+import main.java.database.entities.Employer;
+import main.java.database.SQLiteJDBC;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -48,7 +48,6 @@ public class EmployerDBHelper extends SQLiteJDBC {
             e.printStackTrace();
         }
         System.out.println(rows);
-        close(con);
     }
 
     private static void createTable() throws SQLException {
@@ -56,7 +55,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
         Statement stmt = con.createStatement();
 
         try {
-            System.out.println("Opened main.java.Database successfully");
+            System.out.println("Opened main.java.database successfully");
 
             String sql = "CREATE TABLE " + TABLE +
                     "(" + PersonMeta.personMeta + ");";

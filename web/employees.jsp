@@ -1,9 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page import="main.java.*" %>
+<%@page import="main.java.database.entities.Employer" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="employees" class="main.java.Controller.EmployerController"/>
+<jsp:useBean id="employees" class="main.java.controller.EmployerController"/>
 
 <c:set var="content">
 
@@ -33,12 +33,12 @@
                     <tbody>
                         TODO: funktioniert nicht!
                         <c:forEach items="${employees.allEmployees}" var="emp">
-                        <tr>
-                        <td>${emp.id}</td>
-                        <td>${emp.name}</td>
-                        <td>${emp.address}</td>
-                        <td>TODO</td>
-                        </tr>
+                            <tr>
+                            <td>${emp.id}</td>
+                            <td>${emp.name}</td>
+                            <td>${emp.address}</td>
+                            <td>TODO</td>
+                            </tr>
                         </c:forEach>
                     </tbody>
                 </table>

@@ -1,7 +1,7 @@
-package main.java.Controller;
+package main.java.controller;
 
-import main.java.Database.Entities.Employer;
-import main.java.Database.Helpers.EmployerDBHelper;
+import main.java.database.entities.Employer;
+import main.java.database.helpers.EmployerDBHelper;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -78,7 +78,7 @@
   var Util = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
-     * Private TransitionEnd Helpers
+     * Private TransitionEnd helpers
      * ------------------------------------------------------------------------
      */
     var TRANSITION_END = 'transitionend';

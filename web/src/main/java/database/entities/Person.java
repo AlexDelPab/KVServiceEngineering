@@ -1,4 +1,4 @@
-package main.java.Database.Entities;
+package main.java.database.entities;
 
 public abstract class Person {
     private int id;

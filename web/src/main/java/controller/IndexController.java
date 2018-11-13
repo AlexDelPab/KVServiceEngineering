@@ -1,4 +1,4 @@
-package main.java.Controller;
+package main.java.controller;
 
 public class IndexController {
 

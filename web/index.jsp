@@ -2,7 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="index" class="main.java.Controller.IndexController"/>
+<jsp:useBean id="index" class="main.java.controller.IndexController"/>
 
 <c:set var="content">
     <h1>Hello <%= index.getTestString() %></h1>

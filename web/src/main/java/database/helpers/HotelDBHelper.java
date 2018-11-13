@@ -1,8 +1,8 @@
-package main.java.Database.Helpers;
+package main.java.database.helpers;
 
 
-import main.java.Database.Entities.Hotel;
-import main.java.Database.SQLiteJDBC;
+import main.java.database.entities.Hotel;
+import main.java.database.SQLiteJDBC;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -44,7 +44,6 @@ public class HotelDBHelper extends SQLiteJDBC {
             e.printStackTrace();
         }
         System.out.println(rows);
-        close(con);
     }
 
     private static void createTable() throws SQLException {
@@ -52,7 +51,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         Statement stmt = con.createStatement();
 
         try {
-            System.out.println("Opened main.java.Database successfully");
+            System.out.println("Opened main.java.database successfully");
 
             String sql = "CREATE TABLE " + TABLE +
                     "(ID INT PRIMARY KEY     NOT NULL,\n" +

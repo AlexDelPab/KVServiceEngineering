@@ -1,4 +1,7 @@
-package main.java.Database;
+package main.java.database;
+
+import main.java.database.helpers.EmployerDBHelper;
+import main.java.database.helpers.HotelDBHelper;
 
 import java.sql.*;
 
@@ -12,9 +15,9 @@ public class SQLiteJDBC {
     public static void main(String[] args) {
         init();
 
-//        HotelDBHelper.init();
-//        GuestDBHelper.init();
-//        EmployerDBHelper.init();
+        HotelDBHelper.init();
+//      GuestDBHelper.init();
+        EmployerDBHelper.init();
 
     }
 
@@ -50,7 +53,7 @@ public class SQLiteJDBC {
             if (con != null) {
                 DatabaseMetaData meta = con.getMetaData();
                 System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new main.java.Database has been created.");
+                System.out.println("A new main.java.database has been created.");
             }
 
         } catch (SQLException e) {
