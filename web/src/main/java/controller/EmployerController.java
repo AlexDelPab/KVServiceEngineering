@@ -13,6 +13,16 @@ public class EmployerController {
 
     public List<Employer> getAllEmployees() {
         try {
+//            List<Employer> list = EmployerDBHelper.findAll();
+//            if (!list.isEmpty()) {
+//
+//                for (Employer e : list) {
+//                    System.out.println(e.getName());
+//                }
+//            } else {
+//                System.out.println("List is empty");
+//
+//            }
             return EmployerDBHelper.findAll();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -21,7 +31,7 @@ public class EmployerController {
         return null;
     }
 
-    public Employer createEmployer(String firstName, String lastName, String street, String zip, String city, String country){
+    public Employer createEmployer(String firstName, String lastName, String street, String zip, String city, String country) {
         Employer employer = new Employer(firstName, lastName, street, zip, city, country);
 
         try {
@@ -31,5 +41,16 @@ public class EmployerController {
         }
 
         return employer;
+    }
+
+    // Test functionalities
+    public static void main(String[] args) {
+
+        try {
+            System.out.println(EmployerDBHelper.getNextId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

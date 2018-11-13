@@ -10,10 +10,3 @@ http://www.sqlitetutorial.net/sqlite-java/create-table/
 
 https://lcdev.dk/2011/09/26/using-sqlite-with-jsp/
 
--- Connect to DB
-
-Rechtsklick SQLiteJDBC und Run SQLiteJDBC.main()
-
--- Open DB in IntelliJ
-
-Doppelklick auf File "Hotel.db"

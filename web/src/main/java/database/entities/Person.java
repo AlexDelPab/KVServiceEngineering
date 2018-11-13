@@ -9,7 +9,17 @@ public abstract class Person {
     private String city;
     private String country;
 
-    public Person(String firstName, String lastName, String street, String zip, String city, String country) {
+    Person(String firstName, String lastName, String street, String zip, String city, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.zip = zip;
+        this.city = city;
+        this.country = country;
+    }
+
+    Person(int id, String firstName, String lastName, String street, String zip, String city, String country) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;

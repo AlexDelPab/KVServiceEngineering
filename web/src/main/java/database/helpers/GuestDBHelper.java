@@ -47,7 +47,6 @@ public class GuestDBHelper extends SQLiteJDBC {
             e.printStackTrace();
         }
         System.out.println(rows);
-        close(con);
     }
 
     private static void createTable() throws SQLException {

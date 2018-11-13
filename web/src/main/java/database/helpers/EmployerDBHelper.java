@@ -25,11 +25,11 @@ public class EmployerDBHelper extends SQLiteJDBC {
         }
 
         List<Employer> employees = new ArrayList<>();
-        employees.add(new Employer("Daniel", "Putschögl", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
-        employees.add(new Employer("Andrea", "Mair", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
-        employees.add(new Employer("Thomas", "Lichtenauer", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
-        employees.add(new Employer("Matthias", "Ettl", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
-        employees.add(new Employer("Alexander", "Pabinger", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
+        employees.add(new Employer(0, "Daniel", "Putschögl", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
+        employees.add(new Employer(1, "Andrea", "Mair", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
+        employees.add(new Employer(2, "Thomas", "Lichtenauer", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
+        employees.add(new Employer(3, "Matthias", "Ettl", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
+        employees.add(new Employer(4, "Alexander", "Pabinger", "Raab-Heim-Straße 1", "4040", "Linz", "Austria"));
 
         try {
             if (con != null) {
@@ -74,7 +74,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
         Statement stat = con.createStatement();
         ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
         while (rs.next()) {
-            rows.add(new Employer(rs.getString("first_name"), rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country")));
+            rows.add(new Employer(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country")));
         }
         close(stat);
         close(rs);
@@ -86,7 +86,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
         Connection con = getConnection();
         PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?, ?, ?);");
         for (int i = 0; i < employees.size(); i++) {
-            prep.setString(1, String.valueOf(i));
+            prep.setInt(1, i);
             prep.setString(2, employees.get(i).getFirstName());
             prep.setString(3, employees.get(i).getLastName());
             prep.setString(4, employees.get(i).getStreet());
@@ -105,7 +105,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
     public static void insertEntity(Employer employer) throws SQLException {
         Connection con = getConnection();
         PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?, ?, ?);");
-        prep.setString(1, String.valueOf(1));
+        prep.setInt(1, getNextId());
         prep.setString(2, employer.getFirstName());
         prep.setString(3, employer.getLastName());
         prep.setString(4, employer.getStreet());
@@ -118,5 +118,21 @@ public class EmployerDBHelper extends SQLiteJDBC {
         prep.executeBatch();
         con.setAutoCommit(true);
         close(prep);
+    }
+
+    public static int getNextId() throws SQLException {
+        Connection con = getConnection();
+        int lastId = 0;
+        Statement stat = con.createStatement();
+        ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
+
+        while (rs.next()) {
+            lastId++;
+        }
+
+        close(stat);
+        close(rs);
+
+        return lastId + 1;
     }
 }

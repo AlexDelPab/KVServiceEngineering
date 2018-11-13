@@ -31,7 +31,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                        TODO: funktioniert nicht!
                         <c:forEach items="${employees.allEmployees}" var="emp">
                             <tr>
                             <td>${emp.id}</td>

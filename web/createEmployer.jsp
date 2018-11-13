@@ -14,14 +14,14 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="firstName" class="form-control" placeholder="First name"
+                                    <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name"
                                            required="required" autofocus="autofocus">
                                     <label for="firstName">First name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="lastName" class="form-control" placeholder="Last name"
+                                    <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name"
                                            required="required">
                                     <label for="lastName">Last name</label>
                                 </div>
@@ -30,30 +30,30 @@
                     </div>
                     <div class="form-group">
                         <div class="form-label-group">
-                            <input type="email" id="email" class="form-control" placeholder="Email address"
+                            <input type="email" name="email" id="email"  class="form-control" placeholder="Email address"
                                    required="required">
                             <label for="email">Email address</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-label-group">
-                            <input type="email" id="inputStreet" class="form-control" placeholder="Street"
+                            <input type="text" name="street" id="street" class="form-control" placeholder="Street"
                                    required="required">
-                            <label for="inputStreet">Street</label>
+                            <label for="street">Street</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-4">
                                 <div class="form-label-group">
-                                    <input type="text" id="zip" class="form-control" placeholder="Zip"
+                                    <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip"
                                            required="required" autofocus="autofocus">
                                     <label for="zip">Zip</label>
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="form-label-group">
-                                    <input type="text" id="city" class="form-control" placeholder="City"
+                                    <input type="text" name="city" id="city" class="form-control" placeholder="City"
                                            required="required">
                                     <label for="city">City</label>
                                 </div>
@@ -62,12 +62,12 @@
                     </div>
                     <div class="form-group">
                         <div class="form-label-group">
-                            <input type="email" id="country" class="form-control" placeholder="Country"
+                            <input type="text" name="country" id="country" class="form-control" placeholder="Country"
                                    required="required">
                             <label for="country">Country</label>
                         </div>
                     </div>
-                    <a class="btn btn-primary btn-block" href="login.html">Register</a>
+                    <button class="btn btn-primary btn-block" type="submit">Register</button>
                 </form>
             </div>
         </div>
