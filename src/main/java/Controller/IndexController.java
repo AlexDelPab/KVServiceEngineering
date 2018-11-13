@@ -1,8 +1,8 @@
-package main.java;
+package main.java.Controller;
 
-public class Index {
+public class IndexController {
 
-    public Index() {
+    public IndexController() {
     }
 
     public String getTestString() {

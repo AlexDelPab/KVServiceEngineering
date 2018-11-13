@@ -1,6 +1,6 @@
-package main.java.database.Entities;
+package main.java.Database.Entities;
 
-public class Guest {
+public class Hotel {
 
     private int id;
     private String name;
@@ -8,7 +8,7 @@ public class Guest {
     private String zip;
     private String city;
 
-    public Guest(String name, String street, String zip, String city) {
+    public Hotel(String name, String street, String zip, String city) {
         this.name = name;
         this.street = street;
         this.zip = zip;
