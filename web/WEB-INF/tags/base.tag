@@ -30,7 +30,7 @@
 <div id="wrapper">
 
     <ul class="sidebar navbar-nav">
-        <li class="nav-item"> //es ist einfach nix active, ohne js für a
+        <li class="nav-item"> <!-- es ist einfach nix active, ohne js fürn a -->
             <a class="nav-link" href="../../index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>

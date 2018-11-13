@@ -6,7 +6,7 @@
 
 <c:set var="content">
     <h1>Hello <%= test.getTestString() %></h1>
-    <form action="samplePost.jsp" method="GET">
+    <form action="samplePost.jsp" method="POST">
         First Name: <input type="text" name="first_name">
         <br/>
         Last Name: <input type="text" name="last_name"/>
