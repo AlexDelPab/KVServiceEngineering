@@ -75,7 +75,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
         Statement stat = con.createStatement();
         ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
         while (rs.next()) {
-            rows.add(new Employer(rs.getString("first_name"),rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country")));
+            rows.add(new Employer(rs.getString("first_name"), rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country")));
         }
         close(stat);
         close(rs);
@@ -96,6 +96,24 @@ public class EmployerDBHelper extends SQLiteJDBC {
             prep.setString(7, employees.get(i).getCountry());
             prep.addBatch();
         }
+
+        con.setAutoCommit(false);
+        prep.executeBatch();
+        con.setAutoCommit(true);
+        close(prep);
+    }
+
+    public static void insertEntity(Employer employer) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?, ?, ?);");
+        prep.setString(1, String.valueOf(1));
+        prep.setString(2, employer.getFirstName());
+        prep.setString(3, employer.getLastName());
+        prep.setString(4, employer.getStreet());
+        prep.setString(5, employer.getZip());
+        prep.setString(6, employer.getCity());
+        prep.setString(7, employer.getCountry());
+        prep.addBatch();
 
         con.setAutoCommit(false);
         prep.executeBatch();

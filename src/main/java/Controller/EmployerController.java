@@ -20,4 +20,16 @@ public class EmployerController {
 
         return null;
     }
+
+    public Employer createEmployer(String firstName, String lastName, String street, String zip, String city, String country){
+        Employer employer = new Employer(firstName, lastName, street, zip, city, country);
+
+        try {
+            EmployerDBHelper.insertEntity(employer);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return employer;
+    }
 }
