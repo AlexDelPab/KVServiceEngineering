@@ -8,5 +8,5 @@ public class PersonMeta {
                     " STREET TEXT NOT NULL,\n" +
                     " ZIP TEXT NOT NULL,\n" +
                     " CITY TEXT NOT NULL,\n" +
-                    " COUNTRY TEXT NOT NULL,\n";
+                    " COUNTRY TEXT NOT NULL";
 }

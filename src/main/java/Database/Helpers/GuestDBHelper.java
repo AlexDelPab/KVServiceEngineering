@@ -12,7 +12,7 @@ import java.util.List;
 */
 public class GuestDBHelper extends SQLiteJDBC {
 
-    private static final String TABLE = "GUEST";
+    private static final String TABLE = "Guest";
 
     public static void init() {
         Connection con = getConnection();
@@ -74,7 +74,7 @@ public class GuestDBHelper extends SQLiteJDBC {
         Statement stat = con.createStatement();
         ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
         while (rs.next()) {
-            rows.add(new Guest(rs.getString("firstName"),rs.getString("lastName"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country")));
+            rows.add(new Guest(rs.getString("first_name"),rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country")));
         }
         close(stat);
         close(rs);

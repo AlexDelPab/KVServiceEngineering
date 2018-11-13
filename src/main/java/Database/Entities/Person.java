@@ -9,7 +9,7 @@ public abstract class Person {
     private String city;
     private String country;
 
-    public Person (String firstName, String lastName, String street, String zip, String city, String country) {
+    public Person(String firstName, String lastName, String street, String zip, String city, String country) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -68,5 +68,13 @@ public abstract class Person {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getName() {
+        return this.firstName + " " + this.lastName;
+    }
+
+    public String getAddress() {
+        return this.getStreet() + ", " + this.getZip() + " " + this.getCity();
     }
 }

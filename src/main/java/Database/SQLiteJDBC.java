@@ -1,7 +1,5 @@
 package main.java.Database;
 
-import main.java.Database.Helpers.HotelDBHelper;
-
 import java.sql.*;
 
 public class SQLiteJDBC {
@@ -14,8 +12,10 @@ public class SQLiteJDBC {
     public static void main(String[] args) {
         init();
 
-        HotelDBHelper.init();
+//        HotelDBHelper.init();
 //        GuestDBHelper.init();
+//        EmployerDBHelper.init();
+
     }
 
     public static void init() {
@@ -28,6 +28,11 @@ public class SQLiteJDBC {
     }
 
     public static Connection getConnection() {
+        if (CONNECTION != null) {
+            return CONNECTION;
+        }
+
+        init();
         return CONNECTION;
     }
 

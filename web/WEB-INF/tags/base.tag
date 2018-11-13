@@ -31,16 +31,22 @@
 <div id="wrapper">
 
     <ul class="sidebar navbar-nav">
-        <li class="nav-item"> <!-- es ist einfach nix active, ohne js fürn a -->
+        <li class="nav-item">
             <a class="nav-link" href="../../index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../samplePost.jsp">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Sample Post</span></a>
+            <a class="nav-link" href="../../index.jsp">
+                <i class="fas fa-bed"></i>
+                <span>Guests</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../employees.jsp">
+                <i class="fas fa-address-book"></i>
+                <span>Employees</span></a>
         </li>
     </ul>
 
