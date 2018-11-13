@@ -1,57 +1,7 @@
 package main.java.Database.Entities;
 
-public class Guest {
-
-    private int id;
-    private String name;
-    private String street;
-    private String zip;
-    private String city;
-
-    public Guest(String name, String street, String zip, String city) {
-        this.name = name;
-        this.street = street;
-        this.zip = zip;
-        this.city = city;
-    }
-
-    /**
-     *
-     * Getter/Setter
-     */
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+public class Guest extends Person {
+    public Guest(String firstName, String lastName, String street, String zip, String city, String country) {
+        super(firstName, lastName, street, zip, city, country);
     }
 }

@@ -1,6 +1,7 @@
-package main.java.Database;
+package main.java.database.Helpers;
 
-import main.java.Database.Entities.Hotel;
+import main.java.database.Entities.Hotel;
+import main.java.database.SQLiteJDBC;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 */
 public class HotelDBHelper extends SQLiteJDBC {
 
-    public static final String TABLE = "Hotel";
+    public static final String TABLE = "HOTEL";
 
     public static void init() {
         Connection con = getConnection();
@@ -50,7 +51,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         Statement stmt = con.createStatement();
 
         try {
-            System.out.println("Opened main.java.Database successfully");
+            System.out.println("Opened main.java.database successfully");
 
             String sql = "CREATE TABLE " + TABLE +
                     "(ID INT PRIMARY KEY     NOT NULL,\n" +
