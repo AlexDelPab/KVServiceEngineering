@@ -12,7 +12,7 @@ https://lcdev.dk/2011/09/26/using-sqlite-with-jsp/
 
 -- Connect to DB
 
-Rechtsklick HotelDBHelper und Run HotelDBHelper.main()
+Rechtsklick SQLiteJDBC und Run SQLiteJDBC.main()
 
 -- Open DB in IntelliJ
 
