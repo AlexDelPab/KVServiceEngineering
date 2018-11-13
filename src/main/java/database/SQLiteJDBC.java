@@ -1,4 +1,4 @@
-package database;
+package main.java.database;
 
 import java.sql.*;
 
@@ -16,7 +16,6 @@ public class SQLiteJDBC {
     }
 
     public static void init(){
-
         try {
             CONNECTION = createConnection();
             createNewDatabase();
@@ -38,11 +37,12 @@ public class SQLiteJDBC {
     private static void createNewDatabase() {
 
         try {
-            Connection conn = DriverManager.getConnection(DEFAULT_URL);
-            if (conn != null) {
-                DatabaseMetaData meta = conn.getMetaData();
+            Connection con = DriverManager.getConnection(DEFAULT_URL);
+            System.out.println(con);
+            if (con != null) {
+                DatabaseMetaData meta = con.getMetaData();
                 System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
+                System.out.println("A new main.java.database has been created.");
             }
 
         } catch (SQLException e) {

@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Dashboard</title>
+    <title>Hotel Frontdesk</title>
 
     <link href="../../resources/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../resources/template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,8 +30,8 @@
 <div id="wrapper">
 
     <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+        <li class="nav-item"> //es ist einfach nix active, ohne js für a
+            <a class="nav-link" href="../../index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
@@ -40,11 +40,6 @@
             <a class="nav-link" href="../../samplePost.jsp">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Sample Post</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
         </li>
     </ul>
 

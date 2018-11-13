@@ -1,4 +1,4 @@
-package database;
+package main.java.database;
 
 import main.java.Hotel;
 
@@ -50,7 +50,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         Statement stmt = con.createStatement();
 
         try {
-            System.out.println("Opened database successfully");
+            System.out.println("Opened main.java.database successfully");
 
             String sql = "CREATE TABLE " + TABLE +
                     "(ID INT PRIMARY KEY     NOT NULL,\n" +

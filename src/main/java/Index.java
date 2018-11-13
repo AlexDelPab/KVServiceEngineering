@@ -1,8 +1,8 @@
 package main.java;
 
-public class Test {
+public class Index {
 
-    public Test() {
+    public Index() {
     }
 
     public String getTestString() {
