@@ -1,4 +1,4 @@
-package main.java.database;
+package main.java.Database;
 
 import main.java.database.Helpers.GuestDBHelper;
 import main.java.database.Helpers.HotelDBHelper;
@@ -19,7 +19,7 @@ public class SQLiteJDBC {
 //        GuestDBHelper.init();
     }
 
-    public static void init(){
+    public static void init() {
         try {
             CONNECTION = createConnection();
             createNewDatabase();
@@ -28,7 +28,7 @@ public class SQLiteJDBC {
         }
     }
 
-    public static Connection getConnection (){
+    public static Connection getConnection() {
         return CONNECTION;
     }
 
@@ -46,7 +46,7 @@ public class SQLiteJDBC {
             if (con != null) {
                 DatabaseMetaData meta = con.getMetaData();
                 System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new main.java.database has been created.");
+                System.out.println("A new main.java.Database has been created.");
             }
 
         } catch (SQLException e) {
