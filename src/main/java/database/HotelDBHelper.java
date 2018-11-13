@@ -1,6 +1,6 @@
 package main.java.database;
 
-import main.java.Hotel;
+import main.java.database.Entities.Hotel;
 
 import java.sql.*;
 import java.util.ArrayList;
