@@ -1,12 +1,12 @@
 package main.java.Database.Helpers;
 
 
+import main.java.Database.Entities.Hotel;
+import main.java.Database.SQLiteJDBC;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import main.java.Database.Entities.Hotel;
-import main.java.Database.SQLiteJDBC;
 
 /*
       TODO: write following methods: insert, delete, update
@@ -29,7 +29,7 @@ public class HotelDBHelper extends SQLiteJDBC {
 
         try {
             if (con != null) {
-                saveAll(hotels);
+                insertList(hotels);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         return rows;
     }
 
-    private static void saveAll(List<Hotel> hotels)
+    private static void insertList(List<Hotel> hotels)
             throws SQLException {
         Connection con = getConnection();
         PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?);");
