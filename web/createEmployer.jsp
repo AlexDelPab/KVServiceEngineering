@@ -74,7 +74,7 @@
     </div>
 
 
-    <%= createEmployer.createEmployer(request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("street"), request.getParameter("zip"), request.getParameter("city"), request.getParameter("country")) %>
+    <% createEmployer.createEmployer(request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("street"), request.getParameter("zip"), request.getParameter("city"), request.getParameter("country")); %>
 </c:set>
 
 <t:base>
