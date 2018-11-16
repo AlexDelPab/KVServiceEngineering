@@ -57,7 +57,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
         try {
             System.out.println("Opened main.java.database successfully");
 
-            String sql = "CREATE TABLE " + TABLE +
+            String sql = "CREATE TABLE IF NOT EXISTS " + TABLE +
                     "(" + PersonMeta.personMeta + ");";
             stmt.executeUpdate(sql);
             stmt.close();

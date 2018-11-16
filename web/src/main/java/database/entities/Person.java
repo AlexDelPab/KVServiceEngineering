@@ -9,6 +9,8 @@ public abstract class Person {
     private String city;
     private String country;
 
+    Person(){}
+
     Person(String firstName, String lastName, String street, String zip, String city, String country) {
         this.firstName = firstName;
         this.lastName = lastName;

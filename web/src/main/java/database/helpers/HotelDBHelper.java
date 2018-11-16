@@ -53,7 +53,7 @@ public class HotelDBHelper extends SQLiteJDBC {
         try {
             System.out.println("Opened main.java.database successfully");
 
-            String sql = "CREATE TABLE " + TABLE +
+            String sql = "CREATE TABLE IF NOT EXISTS " + TABLE +
                     "(ID INT PRIMARY KEY     NOT NULL,\n" +
                     " NAME TEXT    NOT NULL,\n " +
                     " STREET TEXT     NOT NULL,\n " +

@@ -3,6 +3,7 @@ package main.java.database;
 import main.java.database.helpers.EmployerDBHelper;
 import main.java.database.helpers.GuestDBHelper;
 import main.java.database.helpers.HotelDBHelper;
+import main.java.database.helpers.RoomDBHelper;
 
 import java.sql.*;
 
@@ -25,9 +26,19 @@ public class SQLiteJDBC {
             e.printStackTrace();
         }
 
+        /*
+          Clean tables on tomcat with following method
+         */
+        try {
+            cleanAllTables();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         HotelDBHelper.init();
-        GuestDBHelper.init();
         EmployerDBHelper.init();
+        GuestDBHelper.init();
+        RoomDBHelper.init();
     }
 
     public static Connection getConnection() {
@@ -59,6 +70,34 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void cleanAllTables() throws Exception {
+        Connection con = getConnection();
+        Statement stmt = con.createStatement();
+
+        try {
+            System.out.println("Clear all tables!");
+
+            String sqlPragmaOpen =
+                    "PRAGMA writable_schema = 1;";
+            String sqlDelete = "delete from sqlite_master where type in ('table', 'index', 'trigger');";
+            String sqlPragmaClose = "PRAGMA writable_schema = 0;";
+            String sqlRecoverDeletedSpace = "VACUUM;";
+            String sqlCheck = "PRAGMA INTEGRITY_CHECK;";
+
+            stmt.executeUpdate(sqlPragmaOpen);
+            stmt.executeUpdate(sqlDelete);
+            stmt.executeUpdate(sqlPragmaClose);
+            stmt.executeUpdate(sqlRecoverDeletedSpace);
+            stmt.executeUpdate(sqlCheck);
+
+            stmt.close();
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
+
+        System.out.println("all tables successfully cleared!");
     }
 
     protected static void close(Connection conn) {
