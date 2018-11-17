@@ -5,6 +5,12 @@
 <jsp:useBean id="createEmployer" class="main.java.controller.EmployerController"/>
 
 <c:set var="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Employer</a>
+        </li>
+        <li class="breadcrumb-item active">Create</li>
+    </ol>
     <div class="container">
         <div class="card card-register mx-auto mt-5">
             <div class="card-header">Register an Employee</div>

@@ -6,16 +6,13 @@
 <jsp:useBean id="guests" class="main.java.controller.GuestController"/>
 
 <c:set var="content">
-
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Guests</a>
+        </li>
+        <li class="breadcrumb-item active">Overview</li>
+    </ol>
     <div class="card mb-3">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-md-12">
-                    <i class="fas fa-table"></i>
-                    Guests
-                </div>
-            </div>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

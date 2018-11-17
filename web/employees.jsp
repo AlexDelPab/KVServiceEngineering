@@ -6,16 +6,17 @@
 <jsp:useBean id="employees" class="main.java.controller.EmployerController"/>
 
 <c:set var="content">
-
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Employees</a>
+        </li>
+        <li class="breadcrumb-item active">Overview</li>
+    </ol>
     <div class="card mb-3">
         <div class="card-header">
             <div class="row">
-                <div class="col-md-6">
-                    <i class="fas fa-table"></i>
-                    Employees
-                </div>
-                <div class="col-md-6 -pull-right">
-                    <a class="btn btn-primary" href="createEmployer.jsp">Create Employee</a>
+                <div class="col-md-12 -pull-right">
+                    <a class="btn btn-primary -pull-right" href="createEmployer.jsp">Create Employee</a>
                 </div>
             </div>
         </div>
@@ -31,14 +32,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${employees.allEmployees}" var="emp">
-                            <tr>
+                    <c:forEach items="${employees.allEmployees}" var="emp">
+                        <tr>
                             <td>${emp.id}</td>
                             <td>${emp.name}</td>
                             <td>${emp.address}</td>
                             <td>TODO</td>
-                            </tr>
-                        </c:forEach>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
