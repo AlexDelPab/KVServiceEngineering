@@ -1,15 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page import="main.java.database.entities.Employer" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="index" class="main.java.controller.IndexController"/>
+<jsp:useBean id="reservations" class="main.java.controller.ReservationController"/>
 
 <c:set var="content">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="#">Employees</a>
-        </li>
+            <a href="#">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Reservations</li>
     </ol>
@@ -28,8 +26,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${index.allReservations}" var="reservation">
-                            <c:set var="id" value="${reservation.id}"/>
+                        <c:forEach items="${reservations.allReservations}" var="reservation">
                             <tr>
                                 <td>${reservation.id}</td>
                                 <td>${reservation.occupiedFrom}</td>
@@ -61,7 +58,7 @@
         </form>
     </div>
 
-    <% index.checkIn(request.getParameter("room")); %>
+    <% reservations.checkIn(request.getParameter("room")); %>
 </c:set>
 
 <t:base>

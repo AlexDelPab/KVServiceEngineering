@@ -38,12 +38,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../views/reservations.jsp">
-                <i class="fas fa-list"></i>
-                <span>Reservations</span>
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="../../views/guests.jsp">
                 <i class="fas fa-bed"></i>
                 <span>Guests</span>
@@ -58,6 +52,11 @@
             <a class="nav-link" href="../../views/rooms.jsp">
                 <i class="fas fa-bed"></i>
                 <span>Rooms</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../views/reservations.jsp">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Reservations</span></a>
         </li>
     </ul>
 

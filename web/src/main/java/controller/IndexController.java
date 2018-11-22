@@ -33,6 +33,10 @@ public class IndexController {
             }
         }
 
+        if (guest == -1) {
+            return;
+        }
+
         RoomDBHelper.updateOccupied(room, guest);
     }
 }
