@@ -16,13 +16,7 @@ public class GuestController {
     }
 
     public List<Guest> getAllGuests() {
-        try {
-            return GuestDBHelper.findAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return GuestDBHelper.findAll();
     }
 
     public Room getRoomById(int id) throws SQLException {

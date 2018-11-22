@@ -23,4 +23,11 @@ public final class Const {
     public static final String NEW_LINE = System.getProperty("line.separator");
     public static final String FILE_SEPARATOR = System.getProperty("file.separator");
     public static final String PATH_SEPARATOR = System.getProperty("path.separator");
+
+    /**
+     * Reservation Status
+     */
+    public static final String STATUS_OPEN = "open";
+    public static final String STATUS_CHECKD_IN = "check_in";
+    public static final String STATUS_CHECK_OUT = "checked_out";
 }

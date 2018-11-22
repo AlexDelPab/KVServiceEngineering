@@ -44,13 +44,9 @@ public class RoomDBHelper extends SQLiteJDBC {
         }
 
         List<Room> rows = null;
-        try {
             if (con != null) {
                 rows = findAll();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         System.out.println(rows);
     }
 
@@ -76,32 +72,65 @@ public class RoomDBHelper extends SQLiteJDBC {
         System.out.println("table " + TABLE + " created successfully!");
     }
 
-    public static List<Room> findAll() throws SQLException {
-        Connection con = getConnection();
+    public static List<Room> findAll() {
         List<Room> rows = new ArrayList<>();
-        Statement stat = con.createStatement();
-        ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
-        while (rs.next()) {
-            rows.add(new Room(rs.getInt("id"), rs.getString("type"), rs.getInt("occupied"), rs.getInt("occupiedBy")));
+
+        try {
+            Connection con = getConnection();
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
+            while (rs.next()) {
+                rows.add(new Room(rs.getInt("id"), rs.getString("type"), rs.getInt("occupied"), rs.getInt("occupiedBy")));
+            }
+            close(stat);
+            close(rs);
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
-        close(stat);
-        close(rs);
+
         return rows;
     }
 
-    public static Room findById(int id) throws SQLException {
-        Connection con = getConnection();
-        Room room = new Room();
-        Statement stat = con.createStatement();
-        ResultSet rs = stat.executeQuery("select * from " + TABLE + " r WHERE r.id =" + id + ";");
-        boolean onlyOneTime = true;
+    public static List<Room> findAllFree() {
+        List<Room> rows = new ArrayList<>();
 
-        while (rs.next() && onlyOneTime) {
-            room = new Room(rs.getInt("id"), rs.getString("type"), rs.getInt("occupied"), rs.getInt("occupiedBy"));
-            onlyOneTime = false;
+        try {
+            Connection con = getConnection();
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("select * from " + TABLE + " WHERE occupied = 0;");
+            while (rs.next()) {
+                rows.add(new Room(rs.getInt("id"), rs.getString("type"), rs.getInt("occupied"), rs.getInt("occupiedBy")));
+            }
+
+            close(stat);
+            close(rs);
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
-        close(stat);
-        close(rs);
+
+        return rows;
+    }
+
+    public static Room findById(int id) {
+        Room room = new Room();
+
+        try {
+            Connection con = getConnection();
+
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("select * from " + TABLE + " r WHERE r.id =" + id + ";");
+            boolean onlyOneTime = true;
+
+            while (rs.next() && onlyOneTime) {
+                room = new Room(rs.getInt("id"), rs.getString("type"), rs.getInt("occupied"), rs.getInt("occupiedBy"));
+                onlyOneTime = false;
+            }
+            close(stat);
+            close(rs);
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
+
         return room;
     }
 

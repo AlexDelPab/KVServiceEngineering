@@ -40,13 +40,9 @@ public class GuestDBHelper extends SQLiteJDBC {
         }
 
         List<Guest> rows = null;
-        try {
             if (con != null) {
                 rows = findAll();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         System.out.println(rows);
     }
 
@@ -70,17 +66,23 @@ public class GuestDBHelper extends SQLiteJDBC {
         System.out.println("table " + TABLE + " created successfully!");
     }
 
-    public static List<Guest> findAll() throws SQLException {
-        Connection con = getConnection();
+    public static List<Guest> findAll() {
         List<Guest> rows = new ArrayList<>();
-        Statement stat = con.createStatement();
 
-        ResultSet rs = stat.executeQuery("SELECT * FROM " + TABLE + ";");
-        while (rs.next()) {
-            rows.add(new Guest(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country"), rs.getInt("occupiesRoom")));
+        try {
+            Connection con = getConnection();
+            Statement stat = con.createStatement();
+
+            ResultSet rs = stat.executeQuery("SELECT * FROM " + TABLE + ";");
+            while (rs.next()) {
+                rows.add(new Guest(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country"), rs.getInt("occupiesRoom")));
+            }
+            close(stat);
+            close(rs);
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
-        close(stat);
-        close(rs);
+
         return rows;
     }
 
