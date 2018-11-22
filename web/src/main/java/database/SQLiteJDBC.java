@@ -1,6 +1,5 @@
 package main.java.database;
 
-import main.java.database.entities.Reservation;
 import main.java.database.helpers.*;
 
 import java.sql.*;

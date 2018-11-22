@@ -25,9 +25,9 @@ public class RoomDBHelper extends SQLiteJDBC {
         }
 
         List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room(Const.ROOM_CLASSIC, Const.FALSE, Const.NULL));
-        rooms.add(new Room(Const.ROOM_CLASSIC, Const.FALSE, Const.NULL));
-        rooms.add(new Room(Const.ROOM_CLASSIC, Const.FALSE, Const.NULL));
+        rooms.add(new Room(Const.ROOM_CLASSIC, Const.TRUE, 0));
+        rooms.add(new Room(Const.ROOM_CLASSIC, Const.TRUE, 1));
+        rooms.add(new Room(Const.ROOM_CLASSIC, Const.TRUE, 2));
         rooms.add(new Room(Const.ROOM_DELUXE, Const.FALSE, Const.NULL));
         rooms.add(new Room(Const.ROOM_DELUXE, Const.FALSE, Const.NULL));
         rooms.add(new Room(Const.ROOM_DELUXE, Const.FALSE, Const.NULL));
@@ -112,7 +112,7 @@ public class RoomDBHelper extends SQLiteJDBC {
         for (int i = 0; i < rooms.size(); i++) {
             prep.setString(1, String.valueOf(i));
             prep.setString(2, rooms.get(i).getType());
-            prep.setInt(3, Const.TRUE);
+            prep.setInt(3, rooms.get(i).isOccupied());
             prep.setInt(4, rooms.get(i).getOccupiedBy());
             prep.addBatch();
         }
