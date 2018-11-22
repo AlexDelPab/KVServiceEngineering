@@ -1,9 +1,7 @@
 package main.java.database;
 
-import main.java.database.helpers.EmployerDBHelper;
-import main.java.database.helpers.GuestDBHelper;
-import main.java.database.helpers.HotelDBHelper;
-import main.java.database.helpers.RoomDBHelper;
+import main.java.database.entities.Reservation;
+import main.java.database.helpers.*;
 
 import java.sql.*;
 
@@ -39,6 +37,7 @@ public class SQLiteJDBC {
         EmployerDBHelper.init();
         GuestDBHelper.init();
         RoomDBHelper.init();
+        ReservationDBHelper.init();
     }
 
     public static Connection getConnection() {

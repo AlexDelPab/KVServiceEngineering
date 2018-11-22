@@ -1,5 +1,6 @@
 package main.java.controller;
 
+import main.java.database.entities.Employer;
 import main.java.database.entities.Guest;
 import main.java.database.entities.Room;
 import main.java.database.helpers.EmployerDBHelper;
@@ -26,6 +27,16 @@ public class GuestController {
 
     public Room getRoomById(int id) throws SQLException {
         return RoomDBHelper.findById(id);
+    }
+
+    public void create(String firstName, String lastName, String street, String zip, String city, String country, String room) {
+        if (firstName == null || firstName.equals("") || lastName == null || lastName.equals("")) {
+            return;
+        }
+
+        Guest guest = new Guest(firstName, lastName, street, zip, city, country);
+
+        GuestDBHelper.insert(guest);
     }
 
     // Test functionalities

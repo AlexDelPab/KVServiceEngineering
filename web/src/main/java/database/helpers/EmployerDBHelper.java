@@ -58,7 +58,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
             System.out.println("Opened main.java.database successfully");
 
             String sql = "CREATE TABLE IF NOT EXISTS " + TABLE +
-                    "(" + PersonMeta.personMeta + ");";
+                    "(" + MetaData.personMeta + ");";
             stmt.executeUpdate(sql);
             stmt.close();
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
         Connection con = getConnection();
         List<Employer> rows = new ArrayList<>();
         Statement stat = con.createStatement();
-        ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
+        ResultSet rs = stat.executeQuery("SELECT * FROM " + TABLE + ";");
         while (rs.next()) {
             rows.add(new Employer(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country")));
         }
@@ -84,7 +84,7 @@ public class EmployerDBHelper extends SQLiteJDBC {
     private static void insertList(List<Employer> employees)
             throws SQLException {
         Connection con = getConnection();
-        PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?, ?, ?);");
+        PreparedStatement prep = con.prepareStatement("INSERT INTO " + TABLE + " VALUES (?, ?, ?, ?, ?, ?, ?);");
         for (int i = 0; i < employees.size(); i++) {
             prep.setInt(1, i);
             prep.setString(2, employees.get(i).getFirstName());
@@ -102,9 +102,9 @@ public class EmployerDBHelper extends SQLiteJDBC {
         close(prep);
     }
 
-    public static void insertEntity(Employer employer) throws SQLException {
+    public static void insert(Employer employer) throws SQLException {
         Connection con = getConnection();
-        PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?, ?, ?);");
+        PreparedStatement prep = con.prepareStatement("INSERT INTO " + TABLE + " VALUES (?, ?, ?, ?, ?, ?, ?);");
         prep.setInt(1, getNextId());
         prep.setString(2, employer.getFirstName());
         prep.setString(3, employer.getLastName());

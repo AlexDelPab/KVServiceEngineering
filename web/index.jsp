@@ -9,77 +9,57 @@
         <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Overview</li>
+        <li class="breadcrumb-item active">Reservations</li>
     </ol>
+    <div class="card mb-3">
+        <form action="index.jsp">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Guest</th>
+                            <th>Room</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${index.allReservations}" var="reservation">
+                            <c:set var="id" value="${reservation.id}"/>
+                            <tr>
+                                <td>${reservation.id}</td>
+                                <td>${reservation.occupiedFrom}</td>
+                                <td>${reservation.occupiedTo}</td>
+                                <td>${reservation.guest}</td>
+                                <td>${reservation.room}</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">
 
-    <!-- Icon Cards-->
-    <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-comments"></i>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-2">
+                            <div class="form-label-group">
+                                <input type="number" min="0" max="8" name="room" id="room" class="form-control" value="0" placeholder="Check In Room Number">
+                                <label for="room">Check In Room Number</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary btn-block" type="submit">Check In</button>
+                        </div>
                     </div>
-                    <div class="mr-5">26 New Messages!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
             </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-list"></i>
-                    </div>
-                    <div class="mr-5">11 New Tasks!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-shopping-cart"></i>
-                    </div>
-                    <div class="mr-5">123 New Orders!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-life-ring"></i>
-                    </div>
-                    <div class="mr-5">13 New Tickets!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-            </div>
-        </div>
+        </form>
     </div>
-    <%--<h1>Hello <%= index.getTestString() %></h1>--%>
+
+    <% index.checkIn(request.getParameter("room")); %>
 </c:set>
 
 <t:base>

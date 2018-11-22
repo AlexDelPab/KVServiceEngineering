@@ -13,6 +13,13 @@
         <li class="breadcrumb-item active">Overview</li>
     </ol>
     <div class="card mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-12 -pull-right">
+                    <a class="btn btn-primary -pull-right" href="createPerson.jsp?person=guest">Create Guest</a>
+                </div>
+            </div>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

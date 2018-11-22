@@ -13,7 +13,7 @@ import java.util.List;
 */
 public class GuestDBHelper extends SQLiteJDBC {
 
-    private static final String TABLE = "Guest";
+    private static final String TABLE = "GUEST";
 
     public static void init() {
         Connection con = getConnection();
@@ -58,7 +58,7 @@ public class GuestDBHelper extends SQLiteJDBC {
             System.out.println("Opened main.java.database successfully");
 
             String sql = "CREATE TABLE IF NOT EXISTS " + TABLE +
-                    "(" + PersonMeta.personMeta + ",\n" +
+                    "(" + MetaData.personMeta + ",\n" +
                     "occupiesRoom INT REFERENCES Room (id)" +
                     ");";
             stmt.executeUpdate(sql);
@@ -74,7 +74,8 @@ public class GuestDBHelper extends SQLiteJDBC {
         Connection con = getConnection();
         List<Guest> rows = new ArrayList<>();
         Statement stat = con.createStatement();
-        ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
+
+        ResultSet rs = stat.executeQuery("SELECT * FROM " + TABLE + ";");
         while (rs.next()) {
             rows.add(new Guest(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("street"), rs.getString("zip"), rs.getString("city"), rs.getString("country"), rs.getInt("occupiesRoom")));
         }
@@ -87,7 +88,7 @@ public class GuestDBHelper extends SQLiteJDBC {
         Connection con = getConnection();
         Guest guest = new Guest();
         Statement stat = con.createStatement();
-        ResultSet rs = stat.executeQuery("select * from " + TABLE + " g WHERE g.id =" + id + ";");
+        ResultSet rs = stat.executeQuery("SELECT * FROM " + TABLE + " g WHERE g.id =" + id + ";");
         boolean onlyOneTime = true;
 
         while (rs.next() && onlyOneTime) {
@@ -99,10 +100,11 @@ public class GuestDBHelper extends SQLiteJDBC {
         return guest;
     }
 
-    private static void insertList(List<Guest> guests)
-            throws SQLException {
+    private static void insertList(List<Guest> guests) throws SQLException {
         Connection con = getConnection();
-        PreparedStatement prep = con.prepareStatement("insert into " + TABLE + " values (?, ?, ?, ?, ?, ?, ?, ?);");
+        con.setAutoCommit(false);
+
+        PreparedStatement prep = con.prepareStatement("INSERT INTO " + TABLE + " VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
         for (int i = 0; i < guests.size(); i++) {
             prep.setString(1, String.valueOf(i));
             prep.setString(2, guests.get(i).getFirstName());
@@ -115,9 +117,31 @@ public class GuestDBHelper extends SQLiteJDBC {
             prep.addBatch();
         }
 
-        con.setAutoCommit(false);
         prep.executeBatch();
         con.setAutoCommit(true);
         close(prep);
+    }
+
+    public static void insert(Guest employer) {
+        try {
+            Connection con = getConnection();
+            con.setAutoCommit(false);
+
+            PreparedStatement prep = MetaData.getInsertStatement(con, TABLE, 8);
+            prep.setObject(1, null);
+            prep.setString(2, employer.getFirstName());
+            prep.setString(3, employer.getLastName());
+            prep.setString(4, employer.getStreet());
+            prep.setString(5, employer.getZip());
+            prep.setString(6, employer.getCity());
+            prep.setString(7, employer.getCountry());
+            prep.setInt(8, employer.getOccupiesRoom());
+            prep.addBatch();
+
+            prep.executeBatch();
+            close(prep);
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
     }
 }

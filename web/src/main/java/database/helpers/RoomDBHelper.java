@@ -25,9 +25,9 @@ public class RoomDBHelper extends SQLiteJDBC {
         }
 
         List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room(Const.ROOM_CLASSIC, Const.TRUE, 0));
-        rooms.add(new Room(Const.ROOM_CLASSIC, Const.TRUE, 1));
-        rooms.add(new Room(Const.ROOM_CLASSIC, Const.TRUE, 2));
+        rooms.add(new Room(Const.ROOM_CLASSIC, Const.FALSE, Const.NULL));
+        rooms.add(new Room(Const.ROOM_CLASSIC, Const.FALSE, Const.NULL));
+        rooms.add(new Room(Const.ROOM_CLASSIC, Const.FALSE, Const.NULL));
         rooms.add(new Room(Const.ROOM_DELUXE, Const.FALSE, Const.NULL));
         rooms.add(new Room(Const.ROOM_DELUXE, Const.FALSE, Const.NULL));
         rooms.add(new Room(Const.ROOM_DELUXE, Const.FALSE, Const.NULL));
@@ -82,7 +82,7 @@ public class RoomDBHelper extends SQLiteJDBC {
         Statement stat = con.createStatement();
         ResultSet rs = stat.executeQuery("select * from " + TABLE + ";");
         while (rs.next()) {
-            rows.add(new Room(rs.getInt("id"), rs.getString("type"),rs.getInt("occupied"), rs.getInt("occupiedBy")));
+            rows.add(new Room(rs.getInt("id"), rs.getString("type"), rs.getInt("occupied"), rs.getInt("occupiedBy")));
         }
         close(stat);
         close(rs);
@@ -97,7 +97,7 @@ public class RoomDBHelper extends SQLiteJDBC {
         boolean onlyOneTime = true;
 
         while (rs.next() && onlyOneTime) {
-            room = new Room(rs.getInt("id"), rs.getString("type"),rs.getInt("occupied"), rs.getInt("occupiedBy"));
+            room = new Room(rs.getInt("id"), rs.getString("type"), rs.getInt("occupied"), rs.getInt("occupiedBy"));
             onlyOneTime = false;
         }
         close(stat);
@@ -112,7 +112,7 @@ public class RoomDBHelper extends SQLiteJDBC {
         for (int i = 0; i < rooms.size(); i++) {
             prep.setString(1, String.valueOf(i));
             prep.setString(2, rooms.get(i).getType());
-            prep.setInt(3, rooms.get(i).isOccupied());
+            prep.setInt(3, Const.TRUE);
             prep.setInt(4, rooms.get(i).getOccupiedBy());
             prep.addBatch();
         }
@@ -121,6 +121,24 @@ public class RoomDBHelper extends SQLiteJDBC {
         prep.executeBatch();
         con.setAutoCommit(true);
         close(prep);
+    }
+
+    public static void updateOccupied(int id, int guest) {
+        try {
+            Connection con = getConnection();
+            con.setAutoCommit(false);
+
+            PreparedStatement prep = con.prepareStatement("UPDATE " + TABLE + " SET occupied = ?, occupiedby = ? WHERE id = ?");
+            prep.setInt(1, Const.TRUE);
+            prep.setInt(2, guest);
+            prep.setInt(3, id);
+            prep.addBatch();
+
+            prep.executeBatch();
+            close(prep);
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
     }
 
 }

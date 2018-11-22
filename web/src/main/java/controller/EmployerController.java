@@ -31,16 +31,18 @@ public class EmployerController {
         return null;
     }
 
-    public Employer createEmployer(String firstName, String lastName, String street, String zip, String city, String country) {
+    public void create(String firstName, String lastName, String street, String zip, String city, String country) {
+        if (firstName == null || firstName.equals("") || lastName == null || lastName.equals("")) {
+            return;
+        }
+
         Employer employer = new Employer(firstName, lastName, street, zip, city, country);
 
         try {
-            EmployerDBHelper.insertEntity(employer);
+            EmployerDBHelper.insert(employer);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return employer;
     }
 
     // Test functionalities

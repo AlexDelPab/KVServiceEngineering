@@ -16,7 +16,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-12 -pull-right">
-                    <a class="btn btn-primary -pull-right" href="createEmployer.jsp">Create Employee</a>
+                    <a class="btn btn-primary -pull-right" href="createPerson.jsp?person=employee">Create Employee</a>
                 </div>
             </div>
         </div>

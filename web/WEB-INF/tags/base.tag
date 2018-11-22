@@ -38,18 +38,18 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../guests.jsp">
+            <a class="nav-link" href="../../views/guests.jsp">
                 <i class="fas fa-bed"></i>
                 <span>Guests</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../employees.jsp">
+            <a class="nav-link" href="../../views/employees.jsp">
                 <i class="fas fa-address-book"></i>
                 <span>Employees</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../rooms.jsp">
+            <a class="nav-link" href="../../views/rooms.jsp">
                 <i class="fas fa-bed"></i>
                 <span>Rooms</span></a>
         </li>
