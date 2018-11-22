@@ -35,4 +35,8 @@ public class MetaData {
     public static ResultSet findById(Statement stmt, String table, int id) throws SQLException {
         return stmt.executeQuery("SELECT * FROM " + table + " x WHERE x.id =" + id + ";");
     }
+
+    public static ResultSet findByDataId(Statement stmt, String table, String data, int id) throws SQLException {
+        return stmt.executeQuery("SELECT * FROM " + table + " x WHERE x." + data + " =" + id + ";");
+    }
 }

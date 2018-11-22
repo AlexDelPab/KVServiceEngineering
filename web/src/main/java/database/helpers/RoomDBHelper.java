@@ -128,8 +128,14 @@ public class RoomDBHelper extends SQLiteJDBC {
             Connection con = getConnection();
             con.setAutoCommit(false);
 
+
+            int bool = Const.TRUE;
+            if (guest == -1) {
+               bool = Const.FALSE;
+            }
+
             PreparedStatement prep = con.prepareStatement("UPDATE " + TABLE + " SET occupied = ?, occupiedby = ? WHERE id = ?");
-            prep.setInt(1, Const.TRUE);
+            prep.setInt(1, bool);
             prep.setInt(2, guest);
             prep.setInt(3, id);
             prep.addBatch();
@@ -140,5 +146,4 @@ public class RoomDBHelper extends SQLiteJDBC {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
     }
-
 }

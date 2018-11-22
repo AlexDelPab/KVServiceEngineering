@@ -133,4 +133,27 @@ public class ReservationDBHelper extends SQLiteJDBC {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
     }
+
+    public static Reservation findByRoomId(int id) {
+        Connection con = getConnection();
+        Reservation reservation = new Reservation();
+
+        try {
+            Statement stat = con.createStatement();
+            ResultSet rs = MetaData.findByDataId(stat, TABLE,"room", id);
+            boolean onlyOneTime = true;
+
+            while (rs.next() && onlyOneTime) {
+                reservation = new Reservation(rs.getInt("id"), rs.getInt("occupied_from"), rs.getInt("occupied_to"), rs.getInt("guest"), rs.getInt("room"));
+                onlyOneTime = false;
+            }
+            close(stat);
+            close(rs);
+
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
+
+        return reservation;
+    }
 }

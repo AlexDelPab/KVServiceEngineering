@@ -28,7 +28,6 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Address</th>
-                        <th>Responsibility</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,7 +36,6 @@
                             <td>${emp.id}</td>
                             <td>${emp.name}</td>
                             <td>${emp.address}</td>
-                            <td>TODO</td>
                         </tr>
                     </c:forEach>
                     </tbody>
