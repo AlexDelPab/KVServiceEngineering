@@ -14,6 +14,7 @@
         </li>
         <li class="breadcrumb-item active">Overview</li>
     </ol>
+    <%=  rooms.doPost(request.getParameter("button"), request.getParameter("roomId"), request.getParameter("guestId")) %>
     <div class="card mb-3">
         <div class="card-header">
             <div class="row">
@@ -124,7 +125,7 @@
     <%--<%= reservations.checkIn(request.getParameter("room")) %>--%>
     <%--<% reservations.checkIn(request.getParameter("room")); %>--%>
 
-    <%=  rooms.doPost(request.getParameter("button"), request.getParameter("roomId"), request.getParameter("guestId")) %>
+
     <%
         rooms.doPost(request.getParameter("button"), request.getParameter("roomId"), request.getParameter("guestId"));
     %>

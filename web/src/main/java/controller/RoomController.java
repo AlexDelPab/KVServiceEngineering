@@ -43,7 +43,7 @@ public class RoomController {
 
             RoomDBHelper.updateOccupied(room, -1);
 
-            return "Successfully checked-out RoomId: " + room;
+            return "<strong style=\"color: #32d306\">Successfully checked-out RoomId: " + room + "</strong>";
         } else if (type.equals("checkIn")) {
             if (guestId == null) {
                 return null;
@@ -54,7 +54,7 @@ public class RoomController {
 
             RoomDBHelper.updateOccupied(room, guest);
 
-            return "Successfully checkedIn RoomId: " + room + " and Guest " + guest;
+            return "<strong style=\"color: #32d306\">Successfully checkedIn RoomId: " + room + " and Guest " + guest + "</strong>";
         }
 
         if (type.isEmpty() && roomId.isEmpty() && guestId.isEmpty()) {
