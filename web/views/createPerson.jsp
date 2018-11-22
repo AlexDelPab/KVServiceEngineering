@@ -99,7 +99,7 @@
     %>
 </c:set>
 
-<t:base>
+<t:base activeItem="guests">
     <jsp:body>
         ${content}
     </jsp:body>

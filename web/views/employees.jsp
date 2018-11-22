@@ -46,7 +46,7 @@
     </div>
 </c:set>
 
-<t:base>
+<t:base activeItem="employees">
     <jsp:body>
         ${content}
     </jsp:body>

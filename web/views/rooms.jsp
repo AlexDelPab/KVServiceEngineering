@@ -55,7 +55,7 @@
     </div>
 </c:set>
 
-<t:base>
+<t:base activeItem="rooms">
     <jsp:body>
         ${content}
     </jsp:body>

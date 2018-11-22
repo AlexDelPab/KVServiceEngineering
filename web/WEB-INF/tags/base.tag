@@ -1,4 +1,6 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8" %>
+<%@ attribute name="activeItem" required="true" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,31 +31,30 @@
 </nav>
 
 <div id="wrapper">
-
     <ul class="sidebar navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item  <c:if test="${activeItem == 'index'}">active</c:if>">
             <a class="nav-link" href="../../index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <c:if test="${activeItem == 'guests'}">active</c:if>">
             <a class="nav-link" href="../../views/guests.jsp">
                 <i class="fas fa-bed"></i>
                 <span>Guests</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <c:if test="${activeItem == 'employees'}">active</c:if>">
             <a class="nav-link" href="../../views/employees.jsp">
                 <i class="fas fa-address-book"></i>
                 <span>Employees</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <c:if test="${activeItem == 'rooms'}">active</c:if>">
             <a class="nav-link" href="../../views/rooms.jsp">
                 <i class="fas fa-bed"></i>
                 <span>Rooms</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <c:if test="${activeItem == 'reservations'}">active</c:if>">
             <a class="nav-link" href="../../views/reservations.jsp">
                 <i class="fas fa-clipboard-list"></i>
                 <span>Reservations</span></a>

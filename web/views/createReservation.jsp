@@ -76,7 +76,7 @@
     <% reservations.create(request.getParameter("from"), request.getParameter("to"), request.getParameter("room"), request.getParameter("user")); %>
 </c:set>
 
-<t:base>
+<t:base activeItem="reservations">
     <jsp:body>
         ${content}
     </jsp:body>
