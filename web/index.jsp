@@ -1,4 +1,5 @@
-<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -31,7 +32,7 @@
                                 <div class="form-label-group">
                                     <strong>Room: </strong>
                                     <select name="roomId" id="roomId1">
-                                        <c:forEach items="${rooms.allRooms}" var="room">
+                                        <c:forEach items="${reservations.allFreeRooms}" var="room">
                                             <option value="${room.id}">${room.id} ${room.type}</option>
                                         </c:forEach>
                                     </select>
@@ -153,16 +154,27 @@
                     <th>To</th>
                     <th>Guest</th>
                     <th>Room</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${reservations.allReservations}" var="reservation">
+                    <c:set var="from" value="${reservation.occupiedFrom}"/>
+                    <c:set var="to" value="${reservation.occupiedTo}"/>
+                    <%
+                        Date from = (Date) pageContext.getAttribute("from");
+                        Date to = (Date) pageContext.getAttribute("to");
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+                    %>
                     <tr>
                         <td>${reservation.id}</td>
-                        <td>${reservation.occupiedFrom}</td>
-                        <td>${reservation.occupiedTo}</td>
+                        <td><%= sdf.format(from) %>
+                        </td>
+                        <td><%= sdf.format(from) %>
+                        </td>
                         <td>${reservation.guest}</td>
                         <td>${reservation.room}</td>
+                        <td>${reservation.status}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -13,6 +13,13 @@
         <li class="breadcrumb-item active">Overview</li>
     </ol>
     <div class="card mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-12 -pull-right">
+                    Rooms
+                </div>
+            </div>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -21,28 +28,22 @@
                         <th>Id</th>
                         <th>Type</th>
                         <th>Occupied</th>
-                        <th>Occupied By</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${rooms.allRooms}" var="room">
                         <tr>
-                            <td>${room.id}</td>
+                            <td>${room.id}
+                                <input type="hidden" id="roomId" name="roomId" value="${room.id}">
+                                <label for="roomId"></label>
+                            </td>
                             <td>${room.type}</td>
                             <td>
                                 <c:if test="${!room.occupiedBool}">
                                     <strong style="color: #32d306">FREE</strong>
                                 </c:if>
                                 <c:if test="${room.occupiedBool}">
-                                    <strong style="color: #ff0b20">OCCUPIED</strong>
-                                </c:if>
-                            </td>
-                            <td>
-                                <c:if test="${room.occupiedBy != -1}">
-                                    ${rooms.getGuestById(room.occupiedBy).name}
-                                </c:if>
-                                <c:if test="${room.occupiedBy == -1}">
-                                    <a class="btn btn-sm btn-primary" href="#">Add Guest</a>
+                                    ${rooms.getGuestById(room.occupiedBy).name} (${rooms.getReservationByGuestId(room.occupiedBy).occupiedTo})
                                 </c:if>
                             </td>
                         </tr>

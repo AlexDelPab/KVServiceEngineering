@@ -32,22 +32,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${guests.allGuests}" var="guest">
-                            <tr>
+                    <c:forEach items="${guests.allGuests}" var="guest">
+                        <tr>
                             <td>${guest.id}</td>
                             <td>${guest.name}</td>
                             <td>${guest.address}</td>
-                                <td>
-                                    <c:if test="${guest.occupiesRoom != -1}">
-                                        ${guests.getRoomById(guest.occupiesRoom).id}
-                                        ${guests.getRoomById(guest.occupiesRoom).type}
-                                    </c:if>
-                                    <c:if test="${guest.occupiesRoom == -1}">
-                                        <a class="btn btn-sm btn-primary" href="#">Add Room</a>
-                                    </c:if>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                            <td>
+                                <c:if test="${guest.occupiesRoom != -1}">
+                                    ${guests.getRoomById(guest.occupiesRoom).id}
+                                    ${guests.getRoomById(guest.occupiesRoom).type}
+                                </c:if>
+                                <c:if test="${guest.occupiesRoom == -1}">
+                                    <a class="btn btn-sm btn-primary" href="../index.jsp">Check-In</a>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
