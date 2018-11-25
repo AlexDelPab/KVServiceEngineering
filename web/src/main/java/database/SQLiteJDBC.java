@@ -32,7 +32,6 @@ public class SQLiteJDBC {
             e.printStackTrace();
         }
 
-        HotelDBHelper.init();
         EmployerDBHelper.init();
         GuestDBHelper.init();
         RoomDBHelper.init();
